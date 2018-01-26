@@ -32,11 +32,9 @@ public:
     explicit MainClass(QObject *parent = nullptr);
     void runAnotherApp();
     void setStartup();
-    void handelFileChange();
 signals:
 
 public slots:
-    void onRegChanged(QString message);
 };
 
 #endif // MAINCLASS_H

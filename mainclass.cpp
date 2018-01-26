@@ -7,6 +7,10 @@
 #include <QCoreApplication>
 #include <QFileSystemWatcher>
 
+/**
+ * @brief MainClass::MainClass
+ * @param parent
+ */
 MainClass::MainClass(QObject *parent) : QObject(parent)
 {
     switch(os) {
@@ -30,12 +34,20 @@ MainClass::MainClass(QObject *parent) : QObject(parent)
     runAnotherApp();
 }
 
+/**
+ * Run another app by Qprocess
+ * @brief MainClass::runAnotherApp
+ */
 void MainClass::runAnotherApp()
 {
     MyProcess* myProcess = new MyProcess();
     myProcess->start();
 }
 
+/**
+ * Set App 1 auto run when os startup
+ * @brief MainClass::setStartup
+ */
 void MainClass::setStartup()
 {
     if(isWin)
@@ -82,12 +94,3 @@ void MainClass::setStartup()
     }
 }
 
-void MainClass::handelFileChange()
-{
-
-}
-
-void MainClass::onRegChanged(QString message)
-{
-    qDebug() << message;
-}
