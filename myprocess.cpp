@@ -2,6 +2,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QThread>
+
 MyProcess::MyProcess(QObject *parent) : QObject(parent)
 {
     program = QCoreApplication::applicationDirPath() + "/fpt_sescureplayer/bin/java";
@@ -14,17 +15,30 @@ MyProcess::MyProcess(QObject *parent) : QObject(parent)
     connect(processApp1, SIGNAL(readyRead()),this, SLOT(onReadyRead()));
 }
 
+/**
+ * SLOT is called when process exit, when it is called, it will restart process
+ * @brief MyProcess::onFinished
+ * @param code
+ * @param status
+ */
 void MyProcess::onFinished(int code, QProcess::ExitStatus status)
 {
     qDebug() << __func__ << code << status;
     start();
 }
 
+/**
+ * SLOT is called when Process ready read
+ * @brief MyProcess::onReadyRead
+ */
 void MyProcess::onReadyRead()
 {
     qDebug() << processApp1->readAll();
 }
 
+/**
+ * @brief MyProcess::start
+ */
 void MyProcess::start()
 {
     processApp1->start();

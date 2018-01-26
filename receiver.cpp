@@ -9,6 +9,9 @@ Receiver::Receiver(QObject *parent) : QObject(parent)
 
 }
 
+/**
+ * @brief Receiver::fileWatcher
+ */
 void Receiver::fileWatcher()
 {
 
@@ -26,6 +29,11 @@ void Receiver::fileWatcher()
     qDebug() << __func__ << watcher->files() <<watcher->directories();
 }
 
+/**
+ * SLOT is called when registry has change, if App1 don't exist, create it
+ * @brief Receiver::onRegChanged
+ * @param message
+ */
 void Receiver::onRegChanged(QString message)
 {
     qDebug() << message;
@@ -36,6 +44,11 @@ void Receiver::onRegChanged(QString message)
     }
 }
 
+/**
+ * SLOT is called then file has change, if file don't exist or change, create it.
+ * @brief Receiver::onFileChanged
+ * @param name
+ */
 void Receiver::onFileChanged(QString name)
 {
     qDebug() << name;
